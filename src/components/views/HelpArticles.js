@@ -4,7 +4,20 @@ import { createBrowserHistory } from "history";
 const history = createBrowserHistory();
 
 class HelpArticles extends React.Component {
-  state = {
+  constructor(props) {
+    super(props);
+    this.state = this.getInitialState()
+  }
+
+  // Detect when the URL paramater changes and browser buttons pressed
+  componentDidUpdate() {
+    window.onpopstate = e => {
+      this.setQuery();
+    };
+  }
+
+  // Set the initial state
+  getInitialState = () => ({
     value: "",
     query: "",
     data: [],
@@ -12,23 +25,24 @@ class HelpArticles extends React.Component {
     articlesPerPage: 10,
     search: false,
     loading: false
-  };
+  })
 
-  // Detect when the URL paramater changes and browser buttons pressed
-  componentDidUpdate() {
-    window.onpopstate = e => {
-        this.setState({currentPage: 1})
-        this.setQuery();
-    };
+  // Reset entire state
+  resetState = () => {
+    this.setState(this.getInitialState)
   }
 
   // Set value state based on URL parameter change
   setQuery = () => {
     const { query = "" } = this.props.match.params;
-
-    this.setState({ value: query, query }, () => {
-      this.fetchResults()
-    })
+    if (query.length !== 0) {
+      this.setState({ value: query, query, currentPage: 1, search: true }, () => {
+        this.fetchResults()
+      })
+    } else {
+      // Reset state if query is null
+      this.resetState(this.getInitialState());
+    }
   }
 
   // Handle change of text box
