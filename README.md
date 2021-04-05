@@ -46,4 +46,3 @@ Tools used to implement this project?
 What could be improved?
 - Improved styling of the application
 - Back and forward buttons in the pagination as it may become out of control if there are too many results
-- Reduced complexity of the history back button process
