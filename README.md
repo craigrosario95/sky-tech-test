@@ -41,7 +41,7 @@ Challenges faced during this project that made it a good learning experience?
 - Limited time meant I had to get the functions right and reduce risk of issues in the code - Following a TDD mindset of testing lines of code rather than blocks helped ensure efficient development.
 
 Tools used to implement this project?
-Facebook's Create React App was used to initialise this project. The application has been built using React, JavaScript and CSS.
+- Facebook's Create React App was used to initialise this project. The application has been built using React, JavaScript and CSS.
 
 What could be improved?
 - Improved styling of the application
